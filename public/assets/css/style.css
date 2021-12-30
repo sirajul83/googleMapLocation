@@ -1,0 +1,37 @@
+     .ui-loader { display: none; position: absolute; opacity: .85; z-index: 100; left: 50%; width: 200px; margin-left: -130px; margin-top: -35px; padding: 10px 30px; }
+    .TransportationMethod{
+        height: 30px;
+        width: 115px;
+        background-color: #fff;
+    }
+    .TransportationDirection{
+         height: 3opx;
+         width: 115px;
+        background-color: green;
+        text-decoration: none;
+        color: #fff;
+        padding: 5px;
+        display: block;
+        margin-left: 50px;
+        margin-top: 10px !important;
+    }
+    .TransportationDirection :hover{
+        color: #f3f3f3;
+    }
+    .Mapbtn{
+        width: 90px;
+        height: 30px;
+        text-decoration: none;
+        color: #fff;
+        background-color: green;
+        padding-left: 10px;
+        margin-right: 120px;
+        margin-top: 5px;
+  }
+ .ui-loading .ui-loader {
+     display: none;
+ }
+
+     .ui-btn-inner .ui-btn-corner-all{
+         display: none;
+     }
