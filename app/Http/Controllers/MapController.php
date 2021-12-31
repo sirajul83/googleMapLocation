@@ -42,10 +42,7 @@ class MapController extends Controller
             $request['distance'] = $distance;
             $location = GeoLocation::create($request->all());
 
-            return response()->json([
-                'success' => true,
-                'data' => $location->id
-            ]);
+            return redirect()->route('map.view', $location->id);
         } catch (\Exception $exception) {
             return response()->json([
                 'success' => false,

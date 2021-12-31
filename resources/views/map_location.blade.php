@@ -1,9 +1,6 @@
 @extends('master')
 @section('title', 'View location')
 @section('style')
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css')}}"/>
-
-{{--    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>--}}
     <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
     <script src="https://maps.google.com/maps/api/js?key=AIzaSyDUPClCAvO-EIlmJajX4Sc3bpGgi57-LnE&libraries=places"
             type="text/javascript"></script>
@@ -153,11 +150,17 @@
 
         // getRouteInfo
         function getRouteInfo() {
+            $.ajaxSetup({
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+             });
             id = $("#route_name").val();
             $.ajax({
                 url: "{{ route('get_route_map_info') }}",
                 type: "POST",
                 data: {
+                    "_token": "{{ csrf_token() }}",
                     id: id
                 },
                 success: function (response) {
@@ -178,5 +181,6 @@
             })
         }
     </script>
-
+<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 @endsection

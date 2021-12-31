@@ -4,10 +4,10 @@
 @endsection
 @section('content')
     <div class="container">
-        <button style="float: right;" class="Mapbtn btn btn-sm btn success" onclick="goBack(`map-location`)"> View Map
-        </button>
+        <a style="float: right;" class="Mapbtn btn btn-sm btn success text-white" onclick="goBack(`map-location`)"> View Map
+        </a>
         <br>
-        <form action="" method="post" class="map_form">
+        <form action="{{ route('map.store')}}" method="post" class="">
             @csrf
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-12 m-auto">
@@ -65,7 +65,7 @@
                     </div>
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-1">
-                    <button type="submit" class="btn btn-block btn-success save_location mt-1">Submit</button>
+                    <button type="submit" class="btn btn-block btn-success  mt-1">Submit</button>
                 </div>
             </div>
 
@@ -99,24 +99,5 @@
                 $('#end_longitude').val(place.geometry['location'].lng());
             });
         }
-
-        $(".save_location").click(function (event) {
-            event.preventDefault();
-            console.log('ok');
-            let formData = $('.map_form').serialize();
-            $.ajax({
-                url: "{{ route('map.store') }}",
-                type: "POST",
-                data: formData,
-                success: function (response) {
-                    console.log(response)
-                    if (response.success == true){
-                        window.location.href = "{{ url('map-route-view') }}/"+response.data
-                    }else{
-                        console.log('ok')
-                    }
-                }
-            })
-        })
     </script>
 @endsection
